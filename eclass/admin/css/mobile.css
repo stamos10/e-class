@@ -1,0 +1,284 @@
+@media (max-width: 791px) {
+  
+ html { overflow-x: hidden; -moz-overflow-x: hidden; -webkit-overflow-x: hidden; -ms-overflow-x: hidden; -o-overflow-x: hidden;} 
+
+ body{
+  
+ }
+ 
+ .container{
+    
+    width: 95%;
+    margin: 30px auto;
+    padding: 5px;
+ }
+ 
+ .container-rest{
+    
+    width: 95%;
+    margin: 30px auto;
+    padding: 15px;
+ }
+ 
+ 
+  header{
+    
+    display: block;
+	   position:relative;
+    width: 100%;
+    height: auto;
+  }
+  
+  nav{
+    
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    float: none;
+  }
+ 
+ul.menu{
+    
+    display: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+   
+.header-right{
+	
+	display: block;
+ position: relative;
+	width: 100%;
+	text-align: right;
+	background-color: #FFFFFF;
+	margin: 15px 0;
+ padding: 5px 20px;
+}
+
+a.signin{
+ 
+color: #2c3e50;
+margin-left: 0;
+}
+
+a.signin:hover{
+ 
+ color: #000000;
+}
+
+a.signin:focus{
+ 
+ color: #000000;
+}
+  
+ .mobile-menu{
+    
+    display: block;
+    width: 100%;
+    margin: 20px 0 0;
+    padding: 11px 0 11px 15px;
+    color: #FFFFFF;
+    border: none;
+    background-color: #808b96;
+   }
+   
+   .mobile-menu:hover{
+    
+    color: #FFFFFF;
+   }
+   
+   .mobile-menu:focus{
+    
+    color: #FFFFFF;
+   }
+  
+  #dropped{
+    
+    padding: 5px 0px;
+  }
+
+  ul.menu li{
+    
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  
+  ul.menu li a{
+    
+    display: block;
+    margin: 0;
+    padding: 10px 30px;
+    text-align: left;
+  }
+  
+  ul.menu li:hover{
+    
+     color: #FAFAFA;
+     background-color: #2c3e50;
+  }
+
+  ul.menu li a:hover, ul.menu li:hover > a{
+    
+    color: #FAFAFA;
+    text-decoration: none;
+    background-color: #2c3e50;
+  }
+
+  ul.menu ul li a {
+    
+    font-size: 12px;
+    font-weight: normal;
+    display: block;
+    text-decoration: none;
+    border: 0;
+  }
+
+  ul.menu ul li a:hover, ul.menu ul li:hover > a{
+    
+    text-decoration: none;
+    border: 0;
+  }
+
+  ul.menu li a {
+   
+    text-decoration: none;
+    border: 0;
+  }
+
+  ul.menu li a:hover, .menu li:hover > a{
+    
+    text-decoration: none;
+    border: 0;
+  }
+ 
+div.welcome-msg{
+ 
+position: relative;
+top: 5%;
+left: 0;
+width: 95%;
+margin: 30px auto;
+height: auto;
+padding: 10px;
+}
+
+h1.welcome-title{
+ 
+font-size: 18px;
+text-align: center;
+}
+
+h1.welcome-title-rest{
+ 
+font-size: 18px;
+text-align: center;
+}
+
+h1.title{
+ 
+ text-align: center;
+}
+
+img.welcome-img{
+ 
+ display: block;
+ width: 80%;
+ margin: 30px auto;
+}
+
+img.welcome-img-rest{
+ 
+ display: block;
+ width: 60%;
+ margin: 10px auto;
+}
+
+div.logo-container{
+ 
+display: none;
+}
+
+img.logo{
+ 
+position: relative;
+top: -30px;
+left: 0px;
+width: 80%;
+margin: 30px auto;
+}
+
+div.gumnasio{
+ 
+ display: none;
+}
+
+div.anakoinwsi{
+
+ padding: 10px;
+}
+
+div.options{
+ 
+ margin: 40px 0; 
+}
+
+div.option{
+ 
+ display: block;
+ width: 100%;
+ height: auto;
+ margin: 30px auto;
+ padding: 20px;
+ text-align: center;
+}
+
+a > div.link{
+
+width: 100%;
+margin: 0 auto;
+}
+
+
+footer{
+ 
+ text-align: center;
+}
+
+img.foot-img{
+ 
+width: 50%;
+margin: 10px auto;
+}
+
+#map{
+ 
+ height: 350px;
+}
+
+/*
+ *
+ *ADMIN SECTION
+ */
+
+div.links{
+ 
+ width: 90%;
+ height: auto;
+ margin: 40px auto;
+ padding: 20px 0;
+}
+
+a > div.admin-link{
+ 
+ width: 100%;
+ padding: 7px 5px;
+ font-size: 16px;
+}
+
+ 
+}
