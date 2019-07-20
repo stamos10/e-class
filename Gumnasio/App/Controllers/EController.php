@@ -226,12 +226,6 @@ class EController {
     }
     
     
-    public function adminDeleteMathima(){
-        
-        
-    }
-    
-    
     public function adminUpdateMathitis(){
         
       $conn = new Connection();
@@ -305,6 +299,7 @@ class EController {
       
       $student->phone = $phone;
       $student->tmima = $tmima;
+      $student->id = $id;
       
       if($approved == 1){
         
@@ -332,8 +327,8 @@ class EController {
       $json = file_get_contents('php://input');
       $request = json_decode($json);
       
-      $student_email = $request->student_email;
-      $student->student_email = $student_email;
+      $id = $request->id;
+      $student->id = $id;
       
        if($approved == 1){
         
@@ -422,6 +417,137 @@ class EController {
         }
         return $tmima;
     }
+    
+    
+    public function adminDeleteMathima(){
+     
+      $conn = new Connection();
+      $con = $conn->getConnection();
+      $mathima = new EMathima();
+      $mathima_dao = new EMathimaDAO($con, $mathima);
+      $handler = new FormHandler();
+      $dispatcher = new EDispatcher();
+      
+      $approved = 1;
+      
+      $json = file_get_contents('php://input');
+      $request = json_decode($json);
+      
+      $mathima_id = $request->id;
+      $mathima->id = $mathima_id;
+      
+      if($approved == 1){
+        
+      $mathima_dao->delete_mathima();
+      $message = $dispatcher->releaseJsonConfirmation();
+      echo $message;
+      }else{
+      $error = $dispatcher->releaseJsonRejection();
+      echo $error;
+      }   
+        
+    }
+    
+    public function adminUpdateEkpaideutikos(){
+       
+      $conn = new Connection();
+      $con = $conn->getConnection();
+      $teacher = new ETeacher();
+      $teacher_dao = new ETeacherDAO($con, $teacher);
+      $handler = new FormHandler();
+      $dispatcher = new EDispatcher();
+      
+      $approved = 1;
+      
+      $json = file_get_contents('php://input');
+      $request = json_decode($json);
+      
+      $id = $request->id;
+      $email = $request->email;
+      $lastname = $request->lastname;
+      $firstname = $request->firstname;
+      $eidikotita = $request->eidikotita;
+      
+      $email = $handler->prepare_input($email);
+      $email = $handler->process_input($email);
+      
+      $lastname = $handler->prepare_input($lastname);
+      $lastname = $handler->process_input($lastname);
+      
+      $firstname = $handler->prepare_input($firstname);
+      $firstname = $handler->process_input($firstname);
+      
+      $eidikotita = $handler->prepare_input($eidikotita);
+      $eidikotita = $handler->process_input($eidikotita);
+      
+      if($email != "error"){
+      $teacher->email = $email;
+      }else{   
+      $approved = 0;
+      }
+      
+      if($lastname != "error"){
+      $teacher->lastname = $lastname;
+      }else{   
+      $approved = 0;
+      }
+      
+      if($firstname != "error"){
+      $teacher->firstname = $firstname;
+      }else{   
+      $approved = 0;
+      }
+      
+      if($eidikotita != "error"){
+      $teacher->eidikotita = $eidikotita;
+      }else{   
+      $approved = 0;
+      }
+      
+      $teacher->id = $id;
+      
+      if($approved == 1){
+        
+      $teacher_dao->update_teacher();
+      $message = $dispatcher->releaseJsonConfirmation();
+      echo $message;
+      }else{
+      $error = $dispatcher->releaseJsonRejection();
+      echo $error;
+      } 
+        
+    }
+    
+    public function adminDeleteEkpaideutikos(){
+        
+      $conn = new Connection();
+      $con = $conn->getConnection();
+      $teacher = new ETeacher();
+      $teacher_dao = new ETeacherDAO($con, $teacher);
+      $handler = new FormHandler();
+      $dispatcher = new EDispatcher();
+      
+      $approved = 1;
+      
+      $json = file_get_contents('php://input');
+      $request = json_decode($json);
+      
+      $email = $request->email;
+      $teacher->email = $email;
+      
+      if($approved == 1){
+        
+      $teacher_dao->delete_teacher();
+      $message = $dispatcher->releaseJsonConfirmation();
+      echo $message;
+      }else{
+      $error = $dispatcher->releaseJsonRejection();
+      echo $error;
+      }    
+    }
+    
+    
+    
     
     
     /*

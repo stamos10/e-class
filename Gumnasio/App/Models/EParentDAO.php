@@ -55,7 +55,7 @@ class EParentDAO {
                                                             phone=:phone,
                                                             tmima=:tmima,
                                                             created=:created
-                                                            WHERE parent_email=:parent_email";
+                                                            WHERE id=:id";
                                                 
         $this->paret->timestamp = date('d-m-Y');
         
@@ -68,7 +68,7 @@ class EParentDAO {
         $stmt->bindParam(":phone", $this->paret->phone);
         $stmt->bindParam(":tmima", $this->paret->tmima);
         $stmt->bindParam(":created", $this->paret->timestamp);
-        $stmt->bindParam(":parent_email", $this->paret->parent_email);
+        $stmt->bindParam(":id", $this->paret->id);
         $stmt->execute();
         $this->conn->commit();
         }catch(\PDOEXCEPTION $e){
@@ -96,12 +96,12 @@ class EParentDAO {
     
     public function view_parent(){
         
-        $query = "SELECT * FROM " . $this->table_name . " WHERE parent_email=:parent_email";
+        $query = "SELECT * FROM " . $this->table_name . " WHERE id=:id";
       
         try{
         $this->conn->beginTransaction();
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(":parent_email", $this->paret->parent_email);
+        $stmt->bindParam(":id", $this->paret->id);
         $stmt->execute();
         $this->conn->commit();
         }catch(\PDOEXCEPTION $e){
@@ -131,12 +131,12 @@ class EParentDAO {
     
     public function delete_parent(){
         
-        $query = "DELETE FROM " . $this->table_name . " WHERE parent_email=:parent_email";
+        $query = "DELETE FROM " . $this->table_name . " WHERE id=:id";
         
         try{
         $this->conn->beginTransaction();
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(":parent_email", $this->paret->parent_email);
+        $stmt->bindParam(":id", $this->paret->id);
         $stmt->execute();
         $this->conn->commit();
         }catch(\PDOEXCEPTION $e){

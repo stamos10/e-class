@@ -1,4 +1,4 @@
-@media (max-width: 791px) {
+@media (max-width: 991px) {
   
  html { overflow-x: hidden; -moz-overflow-x: hidden; -webkit-overflow-x: hidden; -ms-overflow-x: hidden; -o-overflow-x: hidden;} 
 
@@ -7,19 +7,33 @@
  }
  
  .container{
-    
-    width: 95%;
-    margin: 30px auto;
-    padding: 5px;
- }
+  
+ display: block;
+	width: 100%;
+ height: auto;
+	padding: 5px 10px;
+	margin: 25px 0;
+ background-color: #FFFFFF;
+}
+
+.container-left{
  
- .container-rest{
-    
-    width: 95%;
-    margin: 30px auto;
-    padding: 15px;
- }
+ display: block;
+ width: 100%;
+ height: auto;
+ margin: 0;
+ padding: 5px 10px;
+ background-color: #FFFFFF;
+}
+
+div.template-holder{
  
+ display:block;
+ width: 100%;
+ max-height: 500px;
+ overflow-y: scroll;
+}
+
  
   header{
     
@@ -27,6 +41,7 @@
 	   position:relative;
     width: 100%;
     height: auto;
+    background-color: #d98b0e;
   }
   
   nav{
@@ -36,6 +51,7 @@
     height: auto;
     margin: 0;
     float: none;
+    background-color: #d98b0e;
   }
  
 ul.menu{
@@ -45,6 +61,7 @@ ul.menu{
     margin: 0;
     padding: 0;
     border: none;
+    background-color: #d98b0e;
   }
    
 .header-right{
@@ -53,14 +70,14 @@ ul.menu{
  position: relative;
 	width: 100%;
 	text-align: right;
-	background-color: #FFFFFF;
+	background-color: #d98b0e;
 	margin: 15px 0;
  padding: 5px 20px;
 }
 
 a.signin{
  
-color: #2c3e50;
+color: #FFFFFF;
 margin-left: 0;
 }
 
@@ -82,7 +99,7 @@ a.signin:focus{
     padding: 11px 0 11px 15px;
     color: #FFFFFF;
     border: none;
-    background-color: #808b96;
+    background-color: #d98b0e;
    }
    
    .mobile-menu:hover{
@@ -112,7 +129,7 @@ a.signin:focus{
     
     display: block;
     margin: 0;
-    padding: 10px 30px;
+    padding: 10px 10px;
     text-align: left;
   }
   
@@ -156,91 +173,62 @@ a.signin:focus{
     border: 0;
   }
  
-div.welcome-msg{
+ul.assist-menu{
  
-position: relative;
-top: 5%;
-left: 0;
-width: 95%;
-margin: 30px auto;
+ margin: 10px 0;
+}
+
+button#print-tmima{
+ 
+ width: 100%;
+ margin: 15px 0;
+}
+
+button#promote-tmima{
+ 
+ display: none;
+}
+
+a.c{
+ 
+ display: none;
+}
+
+h1{
+   
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 30px;
+  margin: 10px 0;
+  color: #101010;
+}
+
+div.menu-option{
+ 
+display: block;
+width: 100%;
 height: auto;
-padding: 10px;
+margin: 50px 0;
+padding: 0;
+border-radius: 3px;
+box-shadow: none;
 }
 
-h1.welcome-title{
- 
-font-size: 18px;
-text-align: center;
+div#template-edit-holder{
+
+margin: 30px 0; 
+box-shadow: none;
 }
 
-h1.welcome-title-rest{
- 
-font-size: 18px;
-text-align: center;
-}
+div#template-single-holder{
 
-h1.title{
- 
- text-align: center;
-}
-
-img.welcome-img{
- 
- display: block;
- width: 80%;
- margin: 30px auto;
-}
-
-img.welcome-img-rest{
- 
- display: block;
- width: 60%;
- margin: 10px auto;
+margin: 30px 0;
+box-shadow: none; 
 }
 
 div.logo-container{
  
 display: none;
-}
-
-img.logo{
- 
-position: relative;
-top: -30px;
-left: 0px;
-width: 80%;
-margin: 30px auto;
-}
-
-div.gumnasio{
- 
- display: none;
-}
-
-div.anakoinwsi{
-
- padding: 10px;
-}
-
-div.options{
- 
- margin: 40px 0; 
-}
-
-div.option{
- 
- display: block;
- width: 100%;
- height: auto;
- margin: 30px auto;
- padding: 20px;
- text-align: center;
-}
-
-a > div.link{
-
-width: 100%;
-margin: 0 auto;
 }
 
 
@@ -249,36 +237,4 @@ footer{
  text-align: center;
 }
 
-img.foot-img{
- 
-width: 50%;
-margin: 10px auto;
-}
-
-#map{
- 
- height: 350px;
-}
-
-/*
- *
- *ADMIN SECTION
- */
-
-div.links{
- 
- width: 90%;
- height: auto;
- margin: 40px auto;
- padding: 20px 0;
-}
-
-a > div.admin-link{
- 
- width: 100%;
- padding: 7px 5px;
- font-size: 16px;
-}
-
- 
 }

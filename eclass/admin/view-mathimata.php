@@ -67,7 +67,6 @@ echo '<div class="alert alert-danger">' . $error . '</div>';
 <td>Όνομα</td>
 <td>Πατρώνυμο</td>
 </tr>
-
 </table>
 <div class="clos" id="close-b"><button class="btn btn-warning">Κλείσιμο</button></div>
 <p class="clear"></p>
@@ -79,7 +78,7 @@ echo '<div class="alert alert-danger">' . $error . '</div>';
 <h2>Επεξεργασία Μαθήματος</h2>
 
 <div class="form-group">
-<label>Τίτλος:</label>
+<label>Τίτλος Μαθήματος:</label>
 <input type="text" class="form-control" name="title" id="title"/>
 <p class="form-error">This a form input error</p>
 </div>
@@ -105,38 +104,19 @@ echo '<div class="alert alert-danger">' . $error . '</div>';
 </div>
 
 <div class="form-group">
-<label>Καθηγητής:</label>
-<select class="form-control" name="teacher" id="teacher">
-<option value="not_ready">Παρακαλώ Επιλέξτε</option>
-</select>
+<label>Όνομα Καθηγητή:</label>
+<input type="text" class="form-control" name="teacher_firstname" id="teacher-firstname"/>
 <p class="form-error">This a form input error</p>
 </div>
 
-<h4>Κατάσταση Μαθητών</h4>
-<table class="mathites table" id="mathites-edit">
-<tr class="warning">
-<td></td>
-<td>Επώνυμο</td>
-<td>Όνομα</td>
-<td>Πατρώνυμο</td>
-</tr>
+<div class="form-group">
+<label>Επώνυμο Καθηγητή:</label>
+<input type="text" class="form-control" name="teacher_lastname" id="teacher-lastname"/>
+<p class="form-error">This a form input error</p>
+</div>
 
-<tr>
-<td><input type="checkbox" name="student"/></td>
-<td>Stamatis</td>
-<td>Strongylis</td>
-<td>Nikiforos</td>
-</tr>
-
-<tr>
-<td><input type="checkbox" name="student"/></td>
-<td>Stamatis</td>
-<td>Strongylis</td>
-<td>Nikiforos</td>
-</tr>
-
-</table>
 <input type="hidden" name="mathima_id" id="mathima-id"/>
+
 <div class="form-group">
 <button class="btn btn-primary pull-right" id="update" style="margin:3px;">Ανανέωση</button>
 <button class="btn btn-warning pull-right" id="close-d" style="margin:3px;">Κλείσιμο</button>

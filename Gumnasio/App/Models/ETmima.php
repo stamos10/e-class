@@ -4,7 +4,7 @@ namespace App\Models;
 
 class ETmima {
     
-    public $student_id;
+    public $id;
     public $tmima;    
     public $timestamp;
     

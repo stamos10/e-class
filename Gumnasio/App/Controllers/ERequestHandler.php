@@ -54,15 +54,32 @@ class ERequestHandler {
            if(isset($_GET['action'])){
             $this->action = $_GET['action'];
            }
-            
+           
            if(isset($_POST['action'])){
             $this->action = $_POST['action'];
+           }
+           
+           
+           
+           if($this->request != null){
+            $this->action = $this->request;
            } 
            
-           if($this->action != null){ 
+           if($this->action != null){
             $this->proceedRequest();
            }else{
-            $data_controller = new EDataController();
+            
+               if(isset($_GET['data-action'])){
+                 $this->data_action = $_GET['data-action'];
+               }
+            
+               if(isset($_POST['data-action'])){
+                 $this->data_action = $_POST['data-action'];
+               } 
+            
+               if($this->data_action != null){
+                  $this->proceedDataRequest();
+               }
            }
         }
         */
@@ -140,6 +157,12 @@ class ERequestHandler {
          case 'apr2':
           $this->controller->adminPromoteMathites(); 
          break;
+         case 'au3':
+          $this->controller->adminUpdateEkpaideutikos(); 
+         break;
+         case 'ad3':
+          $this->controller->adminDeleteEkpaideutikos(); 
+         break;
          default:
           $this->controller->controller_method_redirect_home();  
          break;
@@ -169,6 +192,9 @@ class ERequestHandler {
          break;
          case 'admin-data-mathites':
           $this->data_controller->adminFetchMathites(); 
+         break;
+         case 'admin-data-ekpaideutikoi':
+          $this->data_controller->adminFetchEkpaideutikoi(); 
          break;
          default:
           $this->data_controller->controller_method_redirect_home();  

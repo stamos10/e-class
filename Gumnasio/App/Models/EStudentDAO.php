@@ -28,6 +28,7 @@ class EStudentDAO {
                                                             mothername=:mothername,
                                                             phone=:phone,
                                                             tmima=:tmima,
+                                                            religion=:religion,
                                                             created=:created";
                                                 
         $this->student->timestamp = date('d-m-Y');
@@ -42,6 +43,7 @@ class EStudentDAO {
         $stmt->bindParam(":mothername", $this->student->mothername);
         $stmt->bindParam(":phone", $this->student->phone);
         $stmt->bindParam(":tmima", $this->student->tmima);
+        $stmt->bindParam(":religion", $this->student->religion);
         $stmt->bindParam(":created", $this->student->timestamp);
         $stmt->execute();
         $this->conn->commit();
@@ -59,8 +61,9 @@ class EStudentDAO {
                                                             mothername=:mothername,
                                                             phone=:phone,
                                                             tmima=:tmima,
+                                                            religion=:religion,
                                                             created=:created
-                                                            WHERE student_email=:student_email";
+                                                            WHERE id=:id";
                                                 
         $this->student->timestamp = date('d-m-Y');
         
@@ -74,7 +77,8 @@ class EStudentDAO {
         $stmt->bindParam(":phone", $this->student->phone);
         $stmt->bindParam(":tmima", $this->student->tmima);
         $stmt->bindParam(":created", $this->student->timestamp);
-        $stmt->bindParam(":student_email", $this->student->student_email);
+        $stmt->bindParam(":religion", $this->student->religion);
+        $stmt->bindParam(":id", $this->student->id);
         $stmt->execute();
         $this->conn->commit();
         }catch(\PDOEXCEPTION $e){
@@ -102,12 +106,12 @@ class EStudentDAO {
     
     public function view_student(){
         
-        $query = "SELECT * FROM " . $this->table_name . " WHERE student_email=:student_email";
+        $query = "SELECT * FROM " . $this->table_name . " WHERE id=:id";
       
         try{
         $this->conn->beginTransaction();
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(":student_email", $this->student->student_email);
+        $stmt->bindParam(":id", $this->student->id);
         $stmt->execute();
         $this->conn->commit();
         }catch(\PDOEXCEPTION $e){
@@ -157,12 +161,12 @@ class EStudentDAO {
     
     public function delete_student(){
         
-        $query = "DELETE FROM " . $this->table_name . " WHERE student_email=:student_email";
+        $query = "DELETE FROM " . $this->table_name . " WHERE id=:id";
         
         try{
         $this->conn->beginTransaction();
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(":student_email", $this->student->student_email);
+        $stmt->bindParam(":id", $this->student->id);
         $stmt->execute();
         $this->conn->commit();
         }catch(\PDOEXCEPTION $e){

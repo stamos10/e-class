@@ -97,6 +97,36 @@ class EMathimaDAO {
 
     }
     
+    public function update_mathima_simple(){
+        
+        $query = "UPDATE " . $this->table_name . " SET title=:title,
+                                                            tmima=:tmima,
+                                                            
+                                                            teacher_firstname=:teacher_firstname,
+                                                            teacher_lastname=:teacher_lastname,
+                                                            created=:created
+                                                            WHERE id=:id";
+                                                
+        $this->mathima->timestamp = date('d-m-Y');
+        
+        try{
+        $this->conn->beginTransaction();
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":title", $this->mathima->title);
+        $stmt->bindParam(":tmima", $this->mathima->tmima);
+        //$stmt->bindParam(":teacher_email", $this->mathima->teacher_email);
+        $stmt->bindParam(":teacher_firstname", $this->mathima->teacher_firstname);
+        $stmt->bindParam(":teacher_lastname", $this->mathima->teacher_lastname);
+        $stmt->bindParam(":created", $this->mathima->timestamp);
+        $stmt->bindParam(":id", $this->mathima->id);
+        $stmt->execute();
+        $this->conn->commit();
+        }catch(\PDOEXCEPTION $e){
+            echo $e->getMessage();
+        }
+
+    }
+    
     public function view_mathimata(){
         
         $query = "SELECT * FROM " . $this->table_name . " ORDER BY tmima";

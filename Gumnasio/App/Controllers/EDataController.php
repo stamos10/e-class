@@ -75,13 +75,18 @@ class EDataController {
       $con = $conn->getConnection();
       $mathima = new EMathima();
       $mathima_dao = new EMathimaDAO($con, $mathima);
+      $student = new EStudent();
+      $student_dao = new EStudentDAO($con, $student);
       $handler = new FormHandler();
       $dispatcher = new EDispatcher();
       $approved = 1;
       
       $data_returned = array();
-      $data_fixed = array();
-      $results = $mathima_dao->view_mathimata_extended();
+      $data_returned['mathimata'] = array();
+      $data_returned['students'] = array();
+      
+      $results = $mathima_dao->view_mathimata();
+      $results_b = $student_dao->view_students();
 
       while($row = $results->fetch(\PDO::FETCH_ASSOC)){
         extract($row);
@@ -91,30 +96,29 @@ class EDataController {
                              'teacher_email' => $teacher_email,
                              'teacher_firstname' => $teacher_firstname,
                              'teacher_lastname' => $teacher_lastname,
-                             'student_email' => $student_email,
-                             'firstname' =>$firstname,
-                             'lastname' => $lastname,
-                             'fathername' => $fathername,
                              'created' => $created);
         
-        array_push($data_returned, $result_item);
+        array_push($data_returned['mathimata'], $result_item);
       }
       
-        $unique = 0;
-        if(is_array($data_returned)){
-        if(!empty($data_returned)){
-        if($title != null){ 
-        foreach($data_returned as $key => $val){
-        $unique = array_count_values(array_column($data_returned, 'title'))[$val['title']];
-        if($unique > 1){
-         unset($data_returned[$key]);
-        }
-        }
-        }
-        }
-        }
-      
-      $dispatcher->releaseData(array_merge($data_returned, $data_fixed));  
+      while($row_b = $results_b->fetch(\PDO::FETCH_ASSOC)){
+        extract($row_b);
+        $result_item = array('id' => $id,
+                             'student_email' => $student_email,
+                             'lastname' => $lastname,
+                             'firstname' => $firstname,
+                             'fathername' => $fathername,
+                             'mothername' => $mothername,
+                             'phone' => $phone,
+                             'tmima' =>$tmima,
+                             'religion' => $religion,
+                             'created' => $created);
+        
+        array_push($data_returned['students'], $result_item);
+      }
+          
+            
+      $dispatcher->releaseData($data_returned);  
     }
     
     public function adminFetchMathites(){
@@ -154,6 +158,35 @@ class EDataController {
                              'mothername' => $mothername,
                              'phone' => $phone,
                              'tmima' => $tmima,
+                             'created' => $created
+                             );
+         
+        array_push($data_returned, $result_item);
+      }
+      
+      $dispatcher->releaseData($data_returned);  
+    }
+    
+    public function adminFetchEkpaideutikoi(){
+        
+      $conn = new Connection();
+      $con = $conn->getConnection();
+      $teacher = new ETeacher();
+      $teacher_dao = new ETeacherDAO($con, $teacher);
+      $handler = new FormHandler();
+      $dispatcher = new EDispatcher();
+      $approved = 1;
+      
+      $data_returned = array();
+      $results = $teacher_dao->view_teachers();
+
+      while($row = $results->fetch(\PDO::FETCH_ASSOC)){
+        extract($row);
+        $result_item = array('id' => $id,
+                             'email' => $email,
+                             'lastname' => $lastname,
+                             'firstname' => $firstname,
+                             'eidikotita' => $eidikotita,
                              'created' => $created
                              );
          

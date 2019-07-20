@@ -13,7 +13,6 @@ var close_a = document.getElementById("close-a");
 var close_b = document.getElementById("close-b");
 var close_c = document.getElementById("close-c");
 var close_d = document.getElementById("close-d");
-var update_btn = document.getElementById("update");
 var table_single = document.getElementById("mathites");
 var table_edit = document.getElementById("mathites-edit");
 
@@ -43,7 +42,6 @@ get_request(url_init, "admin-data-mathimata");
  *EVENT LISTENERS
  */
 
-update_btn.addEventListener('click', update_mathima);
 close_a.addEventListener('click', close_single_mathima);
 close_b.addEventListener('click', close_single_mathima);
 close_c.addEventListener('click', close_edit_mathima);
@@ -55,8 +53,7 @@ close_d.addEventListener('click', close_edit_mathima);
  * OBJECT CONSTRUCTOR
  */
 
-function Mathima(id, title, tmima, taksi, teacher_email, teacher_firstname, teacher_lastname, student_firstname,
-                 student_lastname, student_fathername, student_email, created ) {
+function Mathima(id, title, tmima, taksi, teacher_email, teacher_firstname, teacher_lastname, created ) {
     
     this.id = id;
     this.title = title;
@@ -65,6 +62,11 @@ function Mathima(id, title, tmima, taksi, teacher_email, teacher_firstname, teac
     this.teacher_email = teacher_email;
     this.teacher_firstname = teacher_firstname;
     this.teacher_lastname = teacher_lastname;
+    this.created = created;
+}
+
+function Student(student_firstname, student_lastname, student_fathername, student_email, created ) {
+    
     this.student_firstname = student_firstname;
     this.student_lastname = student_lastname;
     this.student_fathername = student_fathername;
@@ -154,38 +156,33 @@ function post_request(url, data) {
 
 function show_template(data) {
     
+    var mathimata = data.mathimata;
+    var mathites = data.students;
     var template = '';
     var buttons_read;
-    var buttons_edit;
     var buttons_del;
     var buttons_read_bottom;
     var read_btn;
-    var edit_btn;
     var del_btn;
     var read_btn_bottom;
     var a;
-    var b;
     var c;
     var d;
-    
-    for (i = 0; i < data.length; i++) {
-        mathima = new Mathima(data[i].id,
-                                data[i].title,
-                                data[i].tmima,
-                                data[i].tmima[0],
-                                data[i].teacher_email,
-                                data[i].teacher_firstname,
-                                data[i].teacher_lastname,
-                                data[i].student_firstname,
-                                data[i].student_lastname,
-                                data[i].student_fathername,
-                                data[i].student_email,
-                                data[i].created);
+          
+    for (i = 0; i < mathimata.length; i++) {
+                 
+        mathima = new Mathima(mathimata[i].id,
+                                mathimata[i].title,
+                                mathimata[i].tmima,
+                                mathimata[i].tmima[0],
+                                mathimata[i].teacher_email,
+                                mathimata[i].teacher_firstname,
+                                mathimata[i].teacher_lastname,
+                                mathimata[i].created);
         
         template += '<div class="menu-option">' +
                     '<div class="math-tools">' +
                     '<a class="a-tools a"><i class="fas fa-book-reader"></i></a>' +
-                    '<a class="a-tools b"><i class="fas fa-edit"></i></a>' +
                     '<a class="a-tools c"><i class="fas fa-trash-alt"></i></a>' +
                     '</div>' +
                     '<p class="clear"></p>' +
@@ -198,35 +195,29 @@ function show_template(data) {
                     '</a>' +
                     '</p>' +
                     '</div>';
-      
-      if (template !== undefined || template != '') {
-      container.innerHTML = template;
-      } 
+        
+        if (template !== undefined || template != '') {
+           container.innerHTML = template;
+        } 
     }
     
       buttons_read = document.querySelectorAll("div.math-tools a.a");
-      buttons_edit = document.querySelectorAll("div.math-tools a.b");
       buttons_del = document.querySelectorAll("div.math-tools a.c");
       buttons_read_bottom = document.querySelectorAll("div.menu-option p a.more");
       
        for (a = 0; a < buttons_read.length; a++) {
         read_btn = buttons_read[a];
-        read_btn.addEventListener('click', show_single_mathima(data[a], data));
+        read_btn.addEventListener('click', show_single_mathima(mathimata[a], mathites));
        }
-        
-       for (b = 0; b < buttons_edit.length; b++) {
-        edit_btn = buttons_edit[b];
-        edit_btn.addEventListener('click', edit_single_mathima(data[b]));
-        }
         
         for (c = 0; c < buttons_del.length; c++) {
         del_btn = buttons_del[c];
-        del_btn.addEventListener('click', delete_single_mathima(data[c]));
+        del_btn.addEventListener('click', delete_single_mathima(mathimata[c]));
         }
         
         for (d = 0; d < buttons_read_bottom.length; d++) {
         read_btn_bottom = buttons_read_bottom[d];
-        read_btn_bottom.addEventListener('click', show_single_mathima(data[d], data));
+        read_btn_bottom.addEventListener('click', show_single_mathima(mathimata[d], mathites));
         }
 }
 
@@ -237,11 +228,12 @@ function show_template(data) {
  * SINGLE MATHIMA TEMPLATE CREATION
  */
 
-function show_single_mathima(mathima, data){
+function show_single_mathima(mathima, mathites){
 
 return function(){
 var i;
 var row;
+
 container.style.display = "none";
 container_single.style.display = "block";
 
@@ -263,35 +255,44 @@ table_single.innerHTML = '<tr class="warning">' +
                            '</tr>';
 
 
-for (i = 0; i < data.length; i++) {
-
+for (i = 0; i < mathites.length; i++) {
+if (mathima.title == "Θρησκευτικά Ορθοδόξων") {
+if (mathites[i].tmima == mathima.tmima) {
+if (mathites[i].religion == '0') {
+    
 row = document.createElement("tr");
-row.innerHTML = "<td>" + data[i].lastname + "</td>" +
-                "<td>" + data[i].firstname + "</td>" +
-                "<td>" + data[i].fathername + "</td>";
+row.innerHTML = "<td>" + mathites[i].lastname + "</td>" +
+                "<td>" + mathites[i].firstname + "</td>" +
+                "<td>" + mathites[i].fathername + "</td>";
             
 table_single.appendChild(row);
 }
+}   
+}else if (mathima.title == "Θρησκευτικά Καθολικών") {
+if (mathites[i].tmima == mathima.tmima) {
+if (mathites[i].religion == '1') {
+row = document.createElement("tr");
+row.innerHTML = "<td>" + mathites[i].lastname + "</td>" +
+                "<td>" + mathites[i].firstname + "</td>" +
+                "<td>" + mathites[i].fathername + "</td>";
+            
+table_single.appendChild(row);
+}
+}   
+}else{
+if (mathites[i].tmima == mathima.tmima) {
+row = document.createElement("tr");
+row.innerHTML = "<td>" + mathites[i].lastname + "</td>" +
+                "<td>" + mathites[i].firstname + "</td>" +
+                "<td>" + mathites[i].fathername + "</td>";
+            
+table_single.appendChild(row);
+}
+}
+}
+
 };
 }
-
-
-
-/*
- *
- * SINGLE MATHIMA UPDATE TEMPLATE CREATION
- */
-
-function edit_single_mathima(mathima){
-  
-return function(){
-
-container.style.display = "none";
-container_edit.style.display = "block"; 
-    
- };
-}
-
 
 
 /*
@@ -310,35 +311,6 @@ function delete_single_mathima(mathima) {
    post_request(url_init, request); 
     
    };
-}
-
-
-
-/*
- *
- * UPDATE MATHIMA
- */
-
-function update_mathima() {
- 
-var title = document.getElementById("title").value;
-var tmima = document.getElementById("tmima").value;
-var content_init = document.getElementById("content-init").value;
-var content = tinyMCE.activeEditor.getContent();
-var sender_email = document.getElementById("sender-email").value;
-var action = document.getElementById("action").value;
-var page = document.getElementById("page").value;
-
-var request = {id : anartisi.id,
-               title : title,
-               tmima : tmima,
-               content_init : content_init,
-               content : content,
-               sender_email : sender_email,
-               action : action,
-               page : page};
-    
-post_request(url_init, request);
 }
 
 

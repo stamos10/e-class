@@ -301,7 +301,7 @@ function delete_single_mathitis(mathitis) {
    
    return function(){
     
-   var request = {student_email : mathitis.student_email,
+   var request = {id : mathitis.id,
                   action : "ad2",
                   page : "view-mathites.php"};
     

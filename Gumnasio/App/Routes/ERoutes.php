@@ -14,7 +14,8 @@ class ERoutes {
     private $valid_admin_urls = array("dashboard.php",
                                       "create-anartisi.php",
                                       "view-mathimata.php",
-                                      "view-mathites.php");
+                                      "view-mathites.php",
+                                      "view-ekpaideutikoi.php");
     
      /*
      * ------------------------------------------------------------------------

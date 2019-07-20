@@ -21,12 +21,10 @@ class ETeacherDAO {
     
     public function add_teacher(){
         
-        $query = "INSERT INTO " . $this->table_name . " SET teacher_id=:teacher_id,
-                                                            email=:email,
+        $query = "INSERT INTO " . $this->table_name . " SET email=:email,
                                                             lastname=:lastname,
                                                             firstname=:firstname,
                                                             eidikotita=:eidikotita,
-                                                            tmima_upethinos=:tmima_upethinos,
                                                             created=:created";
                                                 
         $this->teacher->timestamp = date('d-m-Y');
@@ -34,12 +32,10 @@ class ETeacherDAO {
         try{
         $this->conn->beginTransaction();
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(":teacher_id", $this->teacher->teacher_id);
         $stmt->bindParam(":email", $this->teacher->email);
         $stmt->bindParam(":lastname", $this->teacher->lastname);
         $stmt->bindParam(":firstname", $this->teacher->firstname);
         $stmt->bindParam(":eidikotita", $this->teacher->eidikotita);
-        $stmt->bindParam(":tmima_upeuthinos", $this->teacher->tmima_upeuthinos);
         $stmt->bindParam(":created", $this->teacher->timestamp);
         $stmt->execute();
         $this->conn->commit();
@@ -51,12 +47,10 @@ class ETeacherDAO {
     
     public function update_teacher(){
         
-        $query = "UPDATE " . $this->table_name . " SET teacher_id=:teacher_id,
-                                                            email=:email,
+        $query = "UPDATE " . $this->table_name . " SET email=:email,
                                                             lastname=:lastname,
                                                             firstname=:firstname,
                                                             eidikotita=:eidikotita,
-                                                            tmima_upethinos=:tmima_upethinos,
                                                             created=:created
                                                             WHERE email=:email";
                                                 
@@ -65,12 +59,10 @@ class ETeacherDAO {
         try{
         $this->conn->beginTransaction();
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(":teacher_id", $this->teacher->teacher_id);
         $stmt->bindParam(":email", $this->teacher->email);
         $stmt->bindParam(":lastname", $this->teacher->lastname);
         $stmt->bindParam(":firstname", $this->teacher->firstname);
         $stmt->bindParam(":eidikotita", $this->teacher->eidikotita);
-        $stmt->bindParam(":tmima_upeuthinos", $this->teacher->tmima_upeuthinos);
         $stmt->bindParam(":created", $this->teacher->timestamp);
         $stmt->bindParam(":email", $this->teacher->email);
         $stmt->execute();

@@ -6,7 +6,6 @@ use App\Controllers\ERouteGenerator;
 <li><a href="<?php echo ERouteGenerator::set_url("create-anartisi.php");?>" class="link">Νέα Αναρτηση</a></li>
 <li><a href="<?php echo ERouteGenerator::set_url("view-mathimata.php");?>" class="link">Μαθήματα</a></li>
 <li><a href="<?php echo ERouteGenerator::set_url("view-mathites.php");?>" class="link">Μαθητές</a></li>
-<li><a href="" class="link">Γονείς</a></li>
 <li><a href="<?php echo ERouteGenerator::set_url("view-ekpaideutikoi.php");?>" class="link">Εκπαιδευτικοί</a></li>
 <li><a href="" class="link">Χρήστες</a></li>
 </ul> 

@@ -17,7 +17,9 @@ class EActions {
                                    "ad1" => "adminDeleteMathima",
                                    "au2" => "adminUpdateMathitis",
                                    "ad2" => "adminDeleteMathitis",
-                                   "apr2" => "adminPromoteMathites");
+                                   "apr2" => "adminPromoteMathites",
+                                   "au3" => "adminUpdateEkpaideutikos",
+                                   "ad3" => "adminDeleteEkpaideutikos");
     
      /*
      * ------------------------------------------------------------------------

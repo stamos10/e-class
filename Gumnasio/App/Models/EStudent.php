@@ -4,7 +4,7 @@ namespace App\Models;
 
 class EStudent {
     
-    public $student_id;
+    public $id;
     public $student_email;
     public $lastname;
     public $firstname;
@@ -12,6 +12,7 @@ class EStudent {
     public $mothername;
     public $phone;
     public $tmima;
+    public $religion;
     public $timestamp;
     
     

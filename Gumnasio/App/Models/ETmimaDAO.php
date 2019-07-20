@@ -21,8 +21,7 @@ class ETmimaDAO {
     
     public function add_tmima(){
         
-        $query = "INSERT INTO " . $this->table_name . " SET student_id=:student_id,
-                                                            tmima=:tmima,
+        $query = "INSERT INTO " . $this->table_name . " SET tmima=:tmima,
                                                             created=:created";
                                                 
         $this->tmima->timestamp = date('d-m-Y');
@@ -43,8 +42,7 @@ class ETmimaDAO {
     
     public function update_tmima(){
         
-        $query = "UPDATE " . $this->table_name . " SET student_id=:student_id,
-                                                            tmima=:tmima,
+        $query = "UPDATE " . $this->table_name . " SET tmima=:tmima,
                                                             created=:created
                                                             WHERE id=:id";
                                                 
@@ -53,7 +51,6 @@ class ETmimaDAO {
         try{
         $this->conn->beginTransaction();
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(":student_id", $this->tmima->student_id);
         $stmt->bindParam(":tmima", $this->tmima->tmima);
         $stmt->bindParam(":created", $this->tmima->timestamp);
         $stmt->bindParam(":id", $this->tmima->id);
